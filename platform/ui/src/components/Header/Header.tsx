@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 import NavBar from '../NavBar';
@@ -18,7 +17,6 @@ function Header({
   WhiteLabeling,
   ...props
 }): ReactNode {
-  const { t } = useTranslation('Header');
 
   // TODO: this should be passed in as a prop instead and the react-router-dom
   // dependency should be dropped
@@ -50,14 +48,13 @@ function Header({
                 className="text-primary-active w-8"
               />
             )}
-            <div className="ml-4">
-              {WhiteLabeling?.createLogoComponentFn?.(React, props) || <Svg name="logo-ohif" />}
+            <div className="ml-4 text-white">
+              {WhiteLabeling?.createLogoComponentFn?.(React, props) || 'Hospital General de Ensenada'}
             </div>
           </div>
         </div>
         <div className="flex items-center">{children}</div>
         <div className="flex items-center">
-          <span className="text-common-light mr-3 text-lg">{t('INVESTIGATIONAL USE ONLY')}</span>
           <Dropdown
             id="options"
             showDropdownIcon={false}
